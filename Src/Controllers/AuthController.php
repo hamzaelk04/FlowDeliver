@@ -1,27 +1,37 @@
 <?php
-namespace App\Controller;
+namespace App\Controllers;
 
-require_once __DIR__ . '/../vendor/autoload.php';
-
-use App\Entity\User;
+use App\Service\AuthService;
+use Exception;
 
 class AuthController
 {
-    private User $user;
+    private AuthService $user;
 
-    public function __construct()
-    {
-        $this->user = new User();
-    }
+    // public function __construct()
+    // {
+    //     $this->user = new User();
+    // }
 
     public function register()
     {
-        $this->user->setFirstname($_POST['firstname']);
-        $this->user->setFirstname($_POST['firstname']);
-        $this->user->setFirstname($_POST['firstname']);
-        $this->user->setFirstname($_POST['firstname']);
-        $this->user->setFirstname($_POST['firstname']);
-        $this->user->setFirstname($_POST['firstname']);
-        
+        if ($_POST['submit' != 'register'])
+            header('location: ../register.php');
+        $firstname = $_POST['firstname'];
+        $lastname = $_POST['lastname'];
+        $email = $_POST['Email'];
+        $password = $_POST['Password'];
+        $city = $_POST['City'];
+        $role = $_POST['Role'];
+        $vehicule = null;
+
+        if ($role === 'deliver')
+            $vehicule = $_POST['vehicule'];
+
+        try {
+            $this->user->register($firstname, $lastname, $email, $password, $city, $role, $vehicule);
+        } catch (Exception $th) {
+            echo 'Error: ' . $th->getMessage();
+        }
     }
 }

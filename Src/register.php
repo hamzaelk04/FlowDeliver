@@ -72,7 +72,8 @@
                     <p class="text-slate-500 dark:text-slate-400 text-sm sm:text-base font-normal leading-normal">
                         Seamless Logistics Management</p>
                 </div>
-                <form action="test.php" method="post">
+                
+                <form action="Controllers/AuthController.php" method="post">
                     <div class="flex mb-6">
                         <div
                             class="flex h-12 flex-1 items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-700 p-1">
@@ -160,7 +161,7 @@
                         </div>
                     </div>
                     <div class="mt-8">
-                        <button
+                        <button value="register" name="submit"
                             class="flex w-full cursor-pointer items-center justify-center overflow-hidden rounded-xl h-12 px-5 bg-primary hover:bg-blue-700 text-white text-base font-bold leading-normal tracking-[0.015em] transition-colors shadow-md shadow-blue-500/20">
                             <span class="truncate">Create Account</span>
                         </button>

@@ -9,14 +9,14 @@ class User
     private string $password;
     private string $city;
 
-    // public function __construct($firstname, $lastname, $email, $password, $city)
-    // {
-    //     $this->firstname = $firstname;
-    //     $this->lastname = $lastname;
-    //     $this->email = $email;
-    //     $this->password = $password;
-    //     $this->city = $city;
-    // }
+    public function __construct($firstname, $lastname, $email, $password, $city)
+    {
+        $this->firstname = $firstname;
+        $this->lastname = $lastname;
+        $this->email = $email;
+        $this->password = $password;
+        $this->city = $city;
+    }
 
     public function getFirstname()
     {
