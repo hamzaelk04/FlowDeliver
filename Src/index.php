@@ -11,3 +11,8 @@ $logic = new AuthService();
 // $logic->register('hh', 'lkjhgfd');
 
 // var_dump($client);
+
+
+$firstname = $_POST['firstname'];
+
+echo $firstname;
