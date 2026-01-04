@@ -73,7 +73,7 @@
                         Seamless Logistics Management</p>
                 </div>
                 
-                <form action="index.php" method="post">
+                <form action="Action/register_action.php" method="post">
                     <div class="flex mb-6">
                         <div
                             class="flex h-12 flex-1 items-center justify-center rounded-xl bg-slate-100 dark:bg-slate-700 p-1">
