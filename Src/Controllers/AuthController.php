@@ -13,20 +13,20 @@ class AuthController
     //     $this->user = new User();
     // }
 
-    public function register()
+    public function register($data)
     {
-        if ($_POST['submit' != 'register'])
+        if ($data['submit' != 'register'])
             header('location: ../register.php');
-        $firstname = $_POST['firstname'];
-        $lastname = $_POST['lastname'];
-        $email = $_POST['Email'];
-        $password = $_POST['Password'];
-        $city = $_POST['City'];
-        $role = $_POST['Role'];
+        $firstname = $data['firstname'];
+        $lastname = $data['lastname'];
+        $email = $data['Email'];
+        $password = $data['Password'];
+        $city = $data['City'];
+        $role = $data['Role'];
         $vehicule = null;
 
         if ($role === 'deliver')
-            $vehicule = $_POST['vehicule'];
+            $vehicule = $data['vehicule'];
 
         try {
             $this->user->register($firstname, $lastname, $email, $password, $city, $role, $vehicule);

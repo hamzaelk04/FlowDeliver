@@ -1,11 +1,14 @@
 <?php
 namespace App\Service;
 
-use App\Entity\User;
+use App\Entity\Deliver;
+use App\Entity\Client;
+
 use Exception;
 class AuthService
 {
-    private User $user;
+    private Client $client;
+    private Deliver $delivery;
 
     public function register($firstname, $lastname, $email, $password, $city, $role, $vehicule)
     {
@@ -16,7 +19,7 @@ class AuthService
 
         if($role === 'deliver')
         {
-            
+            $delivery = new Deliver($vehicule);
         }
     }
 }

@@ -12,12 +12,13 @@ class User extends Role
 
     public function __construct($firstname, $lastname, $email, $password, $city, $role)
     {
+        parent::__construct($role);
+
         $this->firstname = $firstname;
         $this->lastname = $lastname;
         $this->email = $email;
         $this->password = $password;
         $this->city = $city;
-        $this->role = $role;
     }
 
     public function getFirstname()
@@ -80,15 +81,15 @@ class User extends Role
         return $this;
     }
 
-    public function getRole()
-    {
-        return $this->role;
-    }
+    // public function getRole()
+    // {
+    //     return $this->role;
+    // }
 
-    public function setRole($role)
-    {
-        $this->role = $role;
+    // public function setRole($role)
+    // {
+    //     $this->role = $role;
 
-        return $this;
-    }
+    //     return $this;
+    // }
 }

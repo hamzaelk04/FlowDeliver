@@ -7,7 +7,7 @@ if($_SERVER['REQUEST_METHOD'] !== 'POST' || $_POST['submit'] !== 'register') hea
 
 $controller = new AuthController();
 
-$controller->register();
+$controller->register($_POST);
 
 // header('location: ../login.php');
 echo 'hhh';

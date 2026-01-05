@@ -6,6 +6,11 @@ abstract class Role
     protected $id;
     protected $role;
     
+    public function __construct($role)
+    {
+        $this->role = $role;
+    }
+
     public function getId()
     {
         return $this->id;
