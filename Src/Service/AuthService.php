@@ -19,7 +19,26 @@ class AuthService
 
         if($role === 'deliver')
         {
-            $delivery = new Deliver($vehicule);
+            $delivery = new Deliver(
+                $firstname,
+                $lastname,
+                $email,
+                $hashedpassword,
+                $city,
+                $role,
+                $vehicule
+                );
+            $this->delivery = $delivery;
+        } else {
+            $client = new Client(
+                $firstname,
+                $lastname,
+                $email,
+                $hashedpassword,
+                $city,
+                $role
+            );
+            $this->client = $client;
         }
     }
 }

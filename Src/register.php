@@ -82,23 +82,22 @@
                                 <span
                                     class="material-symbols-outlined mr-2 text-[20px] group-has-[:checked]:fill-1">domain</span>
                                 <span class="truncate"></span>
-                                <input checked="" id="role-client" class="invisible w-0 h-0" name="role_selector"
-                                    type="radio" value="Client" />Client
+                                <input checked="" id="role-client" class="invisible w-0 h-0"
+                                    type="radio" value="Client" name="role"/>Client
                             </label>
                             <label
                                 class="group flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-gray-600 has-[:checked]:shadow-sm has-[:checked]:text-primary dark:has-[:checked]:text-white text-slate-500 dark:text-slate-400 text-sm font-medium transition-all duration-200">
                                 <span
                                     class="material-symbols-outlined mr-2 text-[20px] group-has-[:checked]:fill-1">local_shipping</span>
                                 <span class="truncate"></span>
-                                <input id="role-delivery" class="invisible w-0 h-0" name="role_selector" type="radio"
-                                    value="Delivery Partner" />Delivery
+                                <input id="role-delivery" class="invisible w-0 h-0" type="radio"
+                                    value="deliver" name="role"/>Delivery
                             </label>
                         </div>
                     </div>
                     <div class="space-y-4">
                         <label class="flex flex-col w-full">
-                            <p class="text-slate-900 dark:text-white text-sm font-medium leading-normal pb-2">First Name
-                            </p>
+                            <p class="text-slate-900 dark:text-white text-sm font-medium leading-normal pb-2">First Name</p>
                             <div class="relative">
                                 <input
                                     class="form-input flex w-full rounded-xl text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-slate-200 dark:border-gray-600 bg-white dark:bg-gray-800 focus:border-primary h-12 placeholder:text-slate-400 p-4 text-base font-normal leading-normal transition-colors"
@@ -106,12 +105,11 @@
                             </div>
                         </label>
                         <label class="flex flex-col w-full">
-                            <p class="text-slate-900 dark:text-white text-sm font-medium leading-normal pb-2">Last Name
-                            </p>
+                            <p class="text-slate-900 dark:text-white text-sm font-medium leading-normal pb-2">Last Name</p>
                             <div class="relative">
                                 <input
                                     class="form-input flex w-full rounded-xl text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-slate-200 dark:border-gray-600 bg-white dark:bg-gray-800 focus:border-primary h-12 placeholder:text-slate-400 p-4 text-base font-normal leading-normal transition-colors"
-                                    placeholder="Doe" type="text" />
+                                    placeholder="Doe" type="text" name="lastname"/>
                             </div>
                         </label>
                         <label class="flex flex-col w-full">
@@ -119,7 +117,7 @@
                             <div class="relative">
                                 <input
                                     class="form-input flex w-full rounded-xl text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-slate-200 dark:border-gray-600 bg-white dark:bg-gray-800 focus:border-primary h-12 placeholder:text-slate-400 p-4 text-base font-normal leading-normal transition-colors"
-                                    placeholder="john@example.com" type="email" />
+                                    placeholder="john@example.com" type="email" name="email"/>
                             </div>
                         </label>
                         <label class="flex flex-col w-full">
@@ -128,7 +126,7 @@
                             <div class="relative">
                                 <input
                                     class="form-input flex w-full rounded-xl text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-slate-200 dark:border-gray-600 bg-white dark:bg-gray-800 focus:border-primary h-12 placeholder:text-slate-400 p-4 pr-12 text-base font-normal leading-normal transition-colors"
-                                    id="password" placeholder="••••••••" type="password" />
+                                    id="password" placeholder="••••••••" type="password" name="password"/>
                                 <button type="button" id="password-toggle"
                                     class="absolute right-4 top-1/2 -translate-y-1/2 cursor-pointer hover:opacity-70 transition-opacity">
                                     <span id="password-toggle-icon"
@@ -141,7 +139,7 @@
                             <div class="relative">
                                 <input
                                     class="form-input flex w-full rounded-xl text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-slate-200 dark:border-gray-600 bg-white dark:bg-gray-800 focus:border-primary h-12 placeholder:text-slate-400 p-4 text-base font-normal leading-normal transition-colors"
-                                    placeholder="New York" type="text" />
+                                    placeholder="New York" type="text" name="city"/>
                             </div>
                         </label>
                         <div id="vehicle-field" class="flex flex-col w-full" style="display: none;">
@@ -150,7 +148,7 @@
                             <div class="relative">
                                 <select
                                     class="form-input flex w-full rounded-xl text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-slate-200 dark:border-gray-600 bg-white dark:bg-gray-800 focus:border-primary h-12 px-4 text-base font-normal leading-normal transition-colors"
-                                    id="vehicle" name="vehicle">
+                                    id="vehicle" name="vehicule">
                                     <option value="">Select a vehicle</option>
                                     <option value="bicycle">Bicycle</option>
                                     <option value="moto">Moto</option>

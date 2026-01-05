@@ -8,21 +8,21 @@ class AuthController
 {
     private AuthService $user;
 
-    // public function __construct()
-    // {
-    //     $this->user = new User();
-    // }
+    public function __construct()
+    {
+        $this->user = new AuthService();
+    }
 
     public function register($data)
     {
-        if ($data['submit' != 'register'])
+        if (!isset($data['submit']) || $data['submit'] !== 'register')
             header('location: ../register.php');
         $firstname = $data['firstname'];
         $lastname = $data['lastname'];
-        $email = $data['Email'];
-        $password = $data['Password'];
-        $city = $data['City'];
-        $role = $data['Role'];
+        $email = $data['email'];
+        $password = $data['password'];
+        $city = $data['city'];
+        $role = $data['role'];
         $vehicule = null;
 
         if ($role === 'deliver')
