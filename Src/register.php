@@ -83,7 +83,7 @@
                                     class="material-symbols-outlined mr-2 text-[20px] group-has-[:checked]:fill-1">domain</span>
                                 <span class="truncate"></span>
                                 <input checked="" id="role-client" class="invisible w-0 h-0"
-                                    type="radio" value="Client" name="role"/>Client
+                                    type="radio" value="2" name="role"/>Client
                             </label>
                             <label
                                 class="group flex cursor-pointer h-full grow items-center justify-center overflow-hidden rounded-lg px-2 has-[:checked]:bg-white dark:has-[:checked]:bg-gray-600 has-[:checked]:shadow-sm has-[:checked]:text-primary dark:has-[:checked]:text-white text-slate-500 dark:text-slate-400 text-sm font-medium transition-all duration-200">
@@ -91,7 +91,7 @@
                                     class="material-symbols-outlined mr-2 text-[20px] group-has-[:checked]:fill-1">local_shipping</span>
                                 <span class="truncate"></span>
                                 <input id="role-delivery" class="invisible w-0 h-0" type="radio"
-                                    value="deliver" name="role"/>Delivery
+                                    value="3" name="role"/>Delivery
                             </label>
                         </div>
                     </div>
@@ -150,10 +150,10 @@
                                     class="form-input flex w-full rounded-xl text-slate-900 dark:text-white focus:outline-0 focus:ring-2 focus:ring-primary/20 border border-slate-200 dark:border-gray-600 bg-white dark:bg-gray-800 focus:border-primary h-12 px-4 text-base font-normal leading-normal transition-colors"
                                     id="vehicle" name="vehicule">
                                     <option value="">Select a vehicle</option>
-                                    <option value="bicycle">Bicycle</option>
-                                    <option value="moto">Moto</option>
-                                    <option value="car">Car</option>
-                                    <option value="truck">Truck</option>
+                                    <option value="1">Bicycle</option>
+                                    <option value="2">Moto</option>
+                                    <option value="3">Car</option>
+                                    <option value="4">Truck</option>
                                 </select>
                             </div>
                         </div>

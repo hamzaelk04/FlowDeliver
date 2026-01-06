@@ -8,9 +8,9 @@ class AuthController
 {
     private AuthService $user;
 
-    public function __construct()
+    public function __construct(AuthService $service)
     {
-        $this->user = new AuthService();
+        $this->user = $service;
     }
 
     public function register($data)

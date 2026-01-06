@@ -18,8 +18,4 @@ class Deliver extends User
         parent::__construct( $firstname,$lastname,$email,$password,$city,$role);
         $this->vehicule = $vehicule;
     }
-    
-    public function test() {
-        $test = new User();
-    }
 }
