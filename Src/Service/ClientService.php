@@ -3,7 +3,9 @@ namespace App\Service;
 
 use App\Repository\ClientRepository;
 use App\Repository\UserRepository;
-class UserService
+use App\Service\UserService;
+
+class ClientService extends UserService
 {
     private ClientRepository $client;
     private UserRepository $user;
@@ -14,14 +16,10 @@ class UserService
         $this->client = $client;
     }
 
-    public function register(
-        $firstname,
-        $lastname,
-        $email,
-        $password,
-        $city,
-        $role
-    ) {
-        
+    public function register($firstname, $lastname, $email, $password, $city, $role, $vehicule)
+    {
+            $userId = $this->user->create($firstname, $lastname, $email,  $city, $role, $password);
+
+            $this->client->create($userId);
     }
 }
