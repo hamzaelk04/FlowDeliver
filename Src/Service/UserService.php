@@ -20,7 +20,8 @@ class UserService
         $email,
         $password,
         $city,
-        $role
+        $role,
+        $vehicule
     ) {
         
     }

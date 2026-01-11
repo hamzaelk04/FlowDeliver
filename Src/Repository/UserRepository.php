@@ -13,10 +13,10 @@ class UserRepository
         $this->pdo = $db->connection();
     }
 
-    public function create($firstname, $lastname, $email, $city, $role, $password)
+    public function createClient($firstname, $lastname, $email, $city, $role, $password)
     {
         try {
-            $sql = "INSERT INTO users (firstname, lastname, email, city, id_role, passwords)
+            $sql = "INSERT INTO users (firstname, lastname, email, city, id_role, password)
         VALUES (:firstname, :lastname, :email, :city, :id_role, :passwords)";
             $stmt = $this->pdo->prepare($sql);
             $stmt->execute([
