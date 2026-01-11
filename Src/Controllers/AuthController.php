@@ -30,6 +30,6 @@ class AuthController
 
         if($data['role'] == '2') $this->client->register($data, $hashedpassword);
     
-        if($data['role'] == '3') $this->delivery->register($data, $hashedpassword); 
+        if($data['role'] == '3') $this->delivery->register($data, $hashedpassword);
     }
 }

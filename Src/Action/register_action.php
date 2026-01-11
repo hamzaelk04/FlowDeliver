@@ -20,6 +20,14 @@ $deliveryService = new DeliveryService($userRepo, $deliveryRepo);
 
 if($_SERVER['REQUEST_METHOD'] !== 'POST' || $_POST['submit'] !== 'register') header('location: ../register.php');
 
-$controller = new AuthController($clientService, $deliveryService);
+try {
+    $controller = new AuthController($clientService, $deliveryService);
 
-$controller->register($_POST);
+    $controller->register($_POST);
+
+    header('location: ../login.php');
+    
+
+} catch (\Exception $th) {
+    echo 'failed registration ' . $th;
+}
