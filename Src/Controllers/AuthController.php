@@ -1,10 +1,8 @@
 <?php
 namespace App\Controllers;
 
-use App\Service\AuthService;
 use App\Service\ClientService;
 use App\Service\DeliveryService;
-use App\Service\UserService;
 use Exception;
 
 class AuthController
@@ -18,7 +16,7 @@ class AuthController
         $this->delivery = $deliveryService;
     }
 
-    public function register($data)
+    public function register(array $data)
     {
         if(!isset($data['submit']) || $data['submit'] !== 'register') header('location: ../register.php');
 

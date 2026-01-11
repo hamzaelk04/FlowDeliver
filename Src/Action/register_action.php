@@ -30,8 +30,13 @@ try {
         session_start();
     }
     
-    // Set flash message for successful registration
-    $_SESSION['flash_message'] = [
+    // Initialize flash_messages array if it doesn't exist
+    if (!isset($_SESSION['flash_messages'])) {
+        $_SESSION['flash_messages'] = [];
+    }
+    
+    // Add flash message for successful registration
+    $_SESSION['flash_messages'][] = [
         'type' => 'success',
         'message' => 'Registered successfully! You can now log in.'
     ];

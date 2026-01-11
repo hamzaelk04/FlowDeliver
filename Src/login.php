@@ -4,11 +4,11 @@ if (session_status() === PHP_SESSION_NONE) {
     session_start();
 }
 
-// Get and clear flash message
-$flashMessage = null;
-if (isset($_SESSION['flash_message'])) {
-    $flashMessage = $_SESSION['flash_message'];
-    unset($_SESSION['flash_message']);
+// Get and clear flash messages
+$flashMessages = [];
+if (isset($_SESSION['flash_messages']) && is_array($_SESSION['flash_messages'])) {
+    $flashMessages = $_SESSION['flash_messages'];
+    unset($_SESSION['flash_messages']);
 }
 ?>
 <!DOCTYPE html>
@@ -73,27 +73,31 @@ if (isset($_SESSION['flash_message'])) {
         <!-- Login Card -->
         <div
             class="bg-white dark:bg-[#1A202C] py-8 px-4 shadow-xl shadow-gray-200/50 dark:shadow-none rounded-xl sm:px-10 border border-gray-100 dark:border-gray-700 mx-4 sm:mx-0">
-            <?php if ($flashMessage): ?>
-            <div id="flash-message" class="mb-6 p-4 rounded-lg <?php echo $flashMessage['type'] === 'success' ? 'bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800' : 'bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800'; ?>">
-                <div class="flex items-center gap-3">
-                    <span class="material-symbols-outlined <?php echo $flashMessage['type'] === 'success' ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'; ?>">
-                        <?php echo $flashMessage['type'] === 'success' ? 'check_circle' : 'error'; ?>
-                    </span>
-                    <p class="text-sm font-medium <?php echo $flashMessage['type'] === 'success' ? 'text-green-800 dark:text-green-200' : 'text-red-800 dark:text-red-200'; ?>">
-                        <?php echo htmlspecialchars($flashMessage['message']); ?>
-                    </p>
-                    <button onclick="document.getElementById('flash-message').remove()" class="ml-auto text-gray-400 hover:text-gray-600 dark:hover:text-gray-200">
-                        <span class="material-symbols-outlined text-lg">close</span>
-                    </button>
+            <?php if (!empty($flashMessages)): ?>
+                <div class="mb-6 space-y-3">
+                    <?php foreach ($flashMessages as $index => $flashMessage): ?>
+                        <div id="flash-message-<?php echo $index; ?>" class="p-4 rounded-lg <?php echo $flashMessage['type'] === 'success' ? 'bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800' : 'bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800'; ?>">
+                            <div class="flex items-center gap-3">
+                                <span class="material-symbols-outlined <?php echo $flashMessage['type'] === 'success' ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'; ?>">
+                                    <?php echo $flashMessage['type'] === 'success' ? 'check_circle' : 'error'; ?>
+                                </span>
+                                <p class="text-sm font-medium flex-1 <?php echo $flashMessage['type'] === 'success' ? 'text-green-800 dark:text-green-200' : 'text-red-800 dark:text-red-200'; ?>">
+                                    <?php echo htmlspecialchars($flashMessage['message']); ?>
+                                </p>
+                                <button onclick="document.getElementById('flash-message-<?php echo $index; ?>').remove()" class="text-gray-400 hover:text-gray-600 dark:hover:text-gray-200">
+                                    <span class="material-symbols-outlined text-lg">close</span>
+                                </button>
+                            </div>
+                        </div>
+                    <?php endforeach; ?>
                 </div>
-            </div>
             <?php endif; ?>
             <div class="mb-6 text-center">
                 <h1 class="text-xl font-bold text-gray-900 dark:text-white">Welcome Back</h1>
                 <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Log in to your dashboard to manage deliveries
                 </p>
             </div>
-            <form action="#" class="space-y-6" method="POST">
+            <form action="Action/login_action.php" class="space-y-6" method="POST">
                 <!-- Email Field -->
                 <div>
                     <label class="block text-sm font-medium leading-6 text-gray-900 dark:text-gray-200"
@@ -125,9 +129,9 @@ if (isset($_SESSION['flash_message'])) {
                 </div>
                 <!-- Submit Button -->
                 <div>
-                    <button
+                    <button value="login" name="submit"
                         class="flex w-full justify-center rounded-lg bg-primary px-3 py-3 text-sm font-semibold leading-6 text-white shadow-sm hover:bg-blue-600 focus-visible:outline focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-primary transition-colors"
-                        type="button">
+                        type="submit">
                         Sign in
                     </button>
                 </div>
@@ -188,9 +192,8 @@ if (isset($_SESSION['flash_message'])) {
     </div>
     <script src="Assets/login.js"></script>
     <script>
-        // Auto-dismiss flash message after 5 seconds
-        const flashMessage = document.getElementById('flash-message');
-        if (flashMessage) {
+        // Auto-dismiss flash messages after 5 seconds
+        document.querySelectorAll('[id^="flash-message-"]').forEach(function(flashMessage) {
             setTimeout(function() {
                 flashMessage.style.transition = 'opacity 0.3s ease-out';
                 flashMessage.style.opacity = '0';
@@ -198,7 +201,7 @@ if (isset($_SESSION['flash_message'])) {
                     flashMessage.remove();
                 }, 300);
             }, 5000);
-        }
+        });
     </script>
 </body>
 

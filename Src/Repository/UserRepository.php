@@ -34,4 +34,18 @@ class UserRepository
             echo 'failed regster new use ' . $th;
         }
     }
+
+    public function findByEmail($email)
+    {
+        try {
+            $sql = "SELECT id, email, password, id_role FROM users WHERE email = :email";
+            $stmt = $this->pdo->prepare($sql);
+            $stmt->execute([':email' => $email]);
+            $value = $stmt->fetch(PDO::FETCH_ASSOC);
+
+            return $value;
+        } catch (PDOException $th) {
+            echo "Failed finding by email " . $th;
+        }
+    }
 }
