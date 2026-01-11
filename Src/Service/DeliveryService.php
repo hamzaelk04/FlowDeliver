@@ -2,25 +2,25 @@
 namespace App\Service;
 
 use App\Database\DbConnection;
-use App\Repository\ClientRepository;
+use App\Repository\DeliveryRepository;
 use App\Repository\UserRepository;
 
-class ClientService
+class DeliveryService
 {
-    private ClientRepository $client;
+    private DeliveryRepository $delivery;
     private DbConnection $db;
     private UserRepository $user;
 
-    public function __construct($userRepo, $clientRepo)
+    public function __construct($userRepo, $deliveryRepo)
     {
         $this->user = $userRepo;
-        $this->client = $clientRepo;
+        $this->delivery = $deliveryRepo;
     }
 
     public function register(array $data, $hashedpassword)
     {
             $userId = $this->user->createUser($data['firstname'], $data['lastname'], $data['email'],  $data['city'], $data['role'], $hashedpassword);
 
-            $this->client->create($userId);
+            $this->delivery->create($userId, $data['vehicule']);
     }
 }
