@@ -25,6 +25,17 @@ try {
 
     $controller->register($_POST);
 
+    // Start session if not already started
+    if (session_status() === PHP_SESSION_NONE) {
+        session_start();
+    }
+    
+    // Set flash message for successful registration
+    $_SESSION['flash_message'] = [
+        'type' => 'success',
+        'message' => 'Registered successfully! You can now log in.'
+    ];
+
     header('location: ../login.php');
     
 

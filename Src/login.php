@@ -1,3 +1,16 @@
+<?php
+// Start session if not already started
+if (session_status() === PHP_SESSION_NONE) {
+    session_start();
+}
+
+// Get and clear flash message
+$flashMessage = null;
+if (isset($_SESSION['flash_message'])) {
+    $flashMessage = $_SESSION['flash_message'];
+    unset($_SESSION['flash_message']);
+}
+?>
 <!DOCTYPE html>
 
 <html class="light" lang="en">
@@ -60,6 +73,21 @@
         <!-- Login Card -->
         <div
             class="bg-white dark:bg-[#1A202C] py-8 px-4 shadow-xl shadow-gray-200/50 dark:shadow-none rounded-xl sm:px-10 border border-gray-100 dark:border-gray-700 mx-4 sm:mx-0">
+            <?php if ($flashMessage): ?>
+            <div id="flash-message" class="mb-6 p-4 rounded-lg <?php echo $flashMessage['type'] === 'success' ? 'bg-green-50 dark:bg-green-900/20 border border-green-200 dark:border-green-800' : 'bg-red-50 dark:bg-red-900/20 border border-red-200 dark:border-red-800'; ?>">
+                <div class="flex items-center gap-3">
+                    <span class="material-symbols-outlined <?php echo $flashMessage['type'] === 'success' ? 'text-green-600 dark:text-green-400' : 'text-red-600 dark:text-red-400'; ?>">
+                        <?php echo $flashMessage['type'] === 'success' ? 'check_circle' : 'error'; ?>
+                    </span>
+                    <p class="text-sm font-medium <?php echo $flashMessage['type'] === 'success' ? 'text-green-800 dark:text-green-200' : 'text-red-800 dark:text-red-200'; ?>">
+                        <?php echo htmlspecialchars($flashMessage['message']); ?>
+                    </p>
+                    <button onclick="document.getElementById('flash-message').remove()" class="ml-auto text-gray-400 hover:text-gray-600 dark:hover:text-gray-200">
+                        <span class="material-symbols-outlined text-lg">close</span>
+                    </button>
+                </div>
+            </div>
+            <?php endif; ?>
             <div class="mb-6 text-center">
                 <h1 class="text-xl font-bold text-gray-900 dark:text-white">Welcome Back</h1>
                 <p class="mt-2 text-sm text-gray-500 dark:text-gray-400">Log in to your dashboard to manage deliveries
@@ -159,6 +187,19 @@
             data-alt="Subtle gradient background decoration"></div>
     </div>
     <script src="Assets/login.js"></script>
+    <script>
+        // Auto-dismiss flash message after 5 seconds
+        const flashMessage = document.getElementById('flash-message');
+        if (flashMessage) {
+            setTimeout(function() {
+                flashMessage.style.transition = 'opacity 0.3s ease-out';
+                flashMessage.style.opacity = '0';
+                setTimeout(function() {
+                    flashMessage.remove();
+                }, 300);
+            }, 5000);
+        }
+    </script>
 </body>
 
 </html>
